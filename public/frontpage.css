@@ -1,0 +1,91 @@
+#site-main .banner-area{
+    width: 100%;
+    padding-left: 2rem;
+    position: relative;
+    background: no-repeat url("/images/cover.webp");
+    background-position-x: right;
+    z-index: -1;
+}
+
+/* ------ Banner area Style ------ */
+
+#site-main .banner-area .banner-title {
+    height: 95vh;
+    padding-top: 16rem;
+}
+
+.Btn {
+    --bg-gradient: linear-gradient(to right, #ff512f, #dd2476);
+    border: none;
+    background: var(--bg-gradient);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.Btn-primary {
+    padding: .8rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.d-inlineblock {
+    display: inline-block;
+}
+
+.py-2{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.text-lg {
+    font-size: 2,2em;
+    line-height: 3rem;
+}
+
+.line-md {
+    line-height: 0.5rem;
+}
+
+.link-decorator {
+    text-decoration: none;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.text-grey {
+    color: #808291;
+}
+
+.text-white {
+    color: whitesmoke;
+}
+
+.text-md {
+    font-size: 1.2em;
+    line-height: 1.5rem;
+}
+
+/* ------ Agency area Style ------ */
+
+#site-main .agency-area{
+    padding: 1em 0;
+    margin-top: 1rem;
+}
+
+.text-red {
+    color: #ff4d6d;
+}
+
+@media (min-width: 768px) {
+    .sm-text-xl {
+        font-size: 2.5em;
+    }
+}
+
+@media (min-height: 800px) {
+    #site-main .banner-area .banner-title {
+        height: 75vh;
+    }
+}
