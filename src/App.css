@@ -1,0 +1,180 @@
+@font-face {
+  font-family: Poppins;
+  src: url('../public/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-Light;
+  src: url('../public/Poppins-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-Italic;
+  src: url('../public/Poppins-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../public/Poppins-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-BoldItalic;
+  src:  url('../public/Poppins-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-SimiBold;
+  src: url('../public/Poppins-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-SimiBoldItalic;
+  src: url('../public/Poppins-SemiBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: Poppins-LightItalic;
+  src:  url('../public/Poppins-LightItalic.woff') format('woff');
+}
+
+:root{
+  /* text colors */
+  --text-gray: #808291;
+  --text-white: #f8f9fa;
+  --text-light: #f6f6f6;
+  --text-dark: #1A3260;
+  --text-dark2: #1A3760D4;
+  --text-red: #ff4d6d;
+  --box-shadow: 0px 0px 50px 0px rgb(0 0 0 /10%);
+  --bg-blue: rgb(171, 248, 238);
+  --bg-red: rgb(249, 162, 178);
+  --bg-yellow: rgb(253, 254, 207);
+  --bg-purple: rgb(229, 210, 244);
+
+  /* gradient colors */
+  --bg-gradient: linear-gradient(to right, #ff512f, #dd2476);
+  --bg-gradient-indigo: linear-gradient(to right, #8e2de2, #4a00e0);
+  --bg-gradient-peach: linear-gradient(to right, #fff7f3, #fff7f3);
+}
+
+body {
+  font-family: 'Poppins' !important;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+/* Background */
+
+.bg-black-blur {
+  background: rgba(248, 248, 248, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* Text */
+
+.text-lg{
+  font-size: 2.2em;
+  line-height: 3rem;
+}
+
+/* Font */
+
+.font-bold {
+  font-family: Poppins-Bold;
+}
+
+.font-simibold {
+  font-family: Poppins-SimiBold;
+}
+
+/* Font Color */
+
+.font-lightblack {
+  color: var(--text-dark);
+}
+
+.font-lightblack2 {
+  color: var(--text-dark2);
+}
+
+/* NavBar */
+
+#navigation {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  flex-direction: column;
+  
+}
+
+#root .App .bg-black-blur .container-fluid .font-simibold {
+  font-size: 2.2em;
+  line-height: 3rem;
+  color: var(--text-dark);
+}
+
+.bg-black-blur .container-fluid #basic-navbar-nav .nav-link {
+  font-weight: bold;
+  color: var(--text-dark2);
+}
+
+.bg-black-blur .container-fluid #basic-navbar-nav .nav-link:hover {
+  color: var(--bg-blue);
+}
+
+.bg-black-blur .container-fluid #basic-navbar-nav .me-auto .nav-link {
+  line-height: 3rem;
+  font-size: 1.1em;
+  padding: 0 1.5rem;
+}
+
+/* button */
+
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #37FF8B;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: transparent;
+  width: 0%;
+  inset: 20% 9%;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+.button:hover .actual-text {
+  color: var(--animation-color);
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}
