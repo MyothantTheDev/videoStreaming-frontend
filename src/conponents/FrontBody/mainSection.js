@@ -35,6 +35,10 @@ const MainSection = () => {
                         <div className='area-title'>
                             <h1 className='font-lightblack'>Set up a suitable chart of account and <br/> Client's database account in accounting system.</h1>
                         </div>
+                        <div className='text-red text-center'>
+                            <i className='bi bi-bi-pc-display-horizontal'></i>
+                            <div>Support Accounting Softwares</div>
+                        </div>
                     </div>
                 </section>
             </main>
