@@ -81,6 +81,10 @@ body {
   line-height: 3rem;
 }
 
+.text-2xl {
+  font-size: 5em;
+}
+
 /* Font */
 
 .font-bold {
