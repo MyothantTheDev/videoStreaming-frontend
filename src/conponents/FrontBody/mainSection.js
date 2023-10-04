@@ -1,5 +1,6 @@
 import React, { Fragment} from 'react';
 import { Helmet } from 'react-helmet';
+import { PcDisplayHorizontal } from 'react-bootstrap-icons';
 
 const MainSection = () => {
     return (
@@ -35,9 +36,13 @@ const MainSection = () => {
                         <div className='area-title'>
                             <h1 className='font-lightblack'>Set up a suitable chart of account and <br/> Client's database account in accounting system.</h1>
                         </div>
-                        <div className='text-red text-center'>
-                            <i className='bi bi-bi-pc-display-horizontal'></i>
-                            <div>Support Accounting Softwares</div>
+                        <div className=''>
+                            <div className=''>
+                                <div className='text-red text-center'>
+                                    <PcDisplayHorizontal className='text-2xl' />
+                                    <div>Support Accounting Softwares</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

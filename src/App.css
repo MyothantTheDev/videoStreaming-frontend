@@ -182,3 +182,13 @@ body {
   color: var(--animation-color);
   filter: drop-shadow(0 0 23px var(--animation-color));
 }
+
+/* Grid */
+
+.grid {
+  display: grid;
+}
+
+.cols-1-grid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
