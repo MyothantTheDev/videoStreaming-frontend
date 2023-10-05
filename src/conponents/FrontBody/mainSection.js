@@ -88,8 +88,8 @@ const MainSection = () => {
                 </section>
                 <section className='container mx-auto counting-area'>
                     <div className='grid cols-1-grid lg-cols-2-grid px-5'>
-                        <div className=''>
-                            <h1 className='pb-5 text-black2 font-simibold'>
+                        <div className='grid-one text-center px-5 md-text-left'>
+                            <h1 className='pb-3 text-black2 font-simibold'>
                                 The hundred of <br/>
                                 completed works <br/>
                                 still counting
@@ -102,18 +102,15 @@ const MainSection = () => {
                                 embarrassing hidden in the middle of text.
                             </p>
                         </div>
-                        <div className=''>
-                            <div className='background font-simibold'>
-                                <div className='blur d-flex center-item text-lg text-dark2'>Work Smart With Digital Life</div>
+                        <div className='grid-two'>
+                            <div className='count-box'>
+                                <div className='grid lg-cols-2-grid shadow-box'>
+                                    <div className='item1 text-center'>
+                                        <div className='text-lg'>30+</div>
+                                        <span className='text-gray'>Total top Services</span>
+                                    </div>
+                                </div>
                             </div>
-                            <p className='pt-5 pb-2 text-gray'>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel semper lorem. 
-                                Vestibulum sed quam id urna feugiat ultricies. Nullam est nisi, tincidunt sagittis sem quis, eleifend consequat mauris. Sed.
-                            </p>
-                            <p className='text-gray'>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel semper lorem. 
-                                Vestibulum sed quam id urna feugiat ultricies. Nullam est nisi, tincidunt sagittis sem quis, eleifend consequat mauris. Sed.
-                            </p>
                         </div>
                     </div>
                 </section>
