@@ -1,6 +1,6 @@
 import React, { Fragment} from 'react';
 import { Helmet } from 'react-helmet';
-import { PcDisplayHorizontal, Cpu } from 'react-bootstrap-icons';
+import { PcDisplayHorizontal, Cpu, Globe } from 'react-bootstrap-icons';
 
 const MainSection = () => {
     return (
@@ -53,7 +53,7 @@ const MainSection = () => {
                                 </div>
                             </div>
                             <div className='text-center text-red mx-5'>
-                                <Cpu className='text-2xl ' />
+                                <Globe className='text-2xl ' />
                                 <div className='text-red text-center my-4'>
                                     <h4 className='text-md font-simibold py-2'>Support Virtual Machines</h4>
                                     <div className='text-gray'>
@@ -61,6 +61,59 @@ const MainSection = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+                <section className='container mx-auto life-area'>
+                    <div className='grid cols-1-grid lg-cols-2-grid px-5'>
+                        <div className='grid-images'>
+                            <div className='image-one'></div>
+                            <div className='image-two'></div>
+                            <div className='image-three'></div>
+                        </div>
+                        <div className='py-10'>
+                            <div className='background font-simibold'>
+                                <div className='blur d-flex center-item text-lg text-dark2'>Work Smart With Digital Life</div>
+                            </div>
+                            <p className='pt-5 pb-2 text-gray'>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel semper lorem. 
+                                Vestibulum sed quam id urna feugiat ultricies. Nullam est nisi, tincidunt sagittis sem quis, eleifend consequat mauris. Sed.
+                            </p>
+                            <p className='text-gray'>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel semper lorem. 
+                                Vestibulum sed quam id urna feugiat ultricies. Nullam est nisi, tincidunt sagittis sem quis, eleifend consequat mauris. Sed.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section className='container mx-auto counting-area'>
+                    <div className='grid cols-1-grid lg-cols-2-grid px-5'>
+                        <div className=''>
+                            <h1 className='pb-5 text-black2 font-simibold'>
+                                The hundred of <br/>
+                                completed works <br/>
+                                still counting
+                            </h1>
+                            <p className='text-gray'>
+                                There are many variations of passages of Lorem Ipsum available, 
+                                but the majority have suffered alteration in some form, by injected humour, 
+                                or randomised words which don't look even slightly believable. 
+                                If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything 
+                                embarrassing hidden in the middle of text.
+                            </p>
+                        </div>
+                        <div className=''>
+                            <div className='background font-simibold'>
+                                <div className='blur d-flex center-item text-lg text-dark2'>Work Smart With Digital Life</div>
+                            </div>
+                            <p className='pt-5 pb-2 text-gray'>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel semper lorem. 
+                                Vestibulum sed quam id urna feugiat ultricies. Nullam est nisi, tincidunt sagittis sem quis, eleifend consequat mauris. Sed.
+                            </p>
+                            <p className='text-gray'>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel semper lorem. 
+                                Vestibulum sed quam id urna feugiat ultricies. Nullam est nisi, tincidunt sagittis sem quis, eleifend consequat mauris. Sed.
+                            </p>
                         </div>
                     </div>
                 </section>

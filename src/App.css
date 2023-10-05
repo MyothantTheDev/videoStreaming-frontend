@@ -183,10 +183,21 @@ body {
   filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
+/* Font size */
+
+.text-lg{
+  font-size: 2.2em;
+  line-height: 3rem;
+}
+
 /* Text Color */
 
 .text-gray {
   color: var(--text-gray);
+}
+
+.text-dark2 {
+  color: var(--text-dark2);
 }
 
 /* Grid */
@@ -197,6 +208,33 @@ body {
 
 .cols-1-grid {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Padding */
+
+.py-6 {
+  padding-top: 3.5rem !important;
+  padding-bottom: 3.5rem !important;
+}
+
+.py-7 {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+.py-8 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.py-9 {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+.py-10 {
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
 }
 
 /* Responsive */

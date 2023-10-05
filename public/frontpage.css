@@ -78,6 +78,81 @@
     color: #ff4d6d;
 }
 
+/* life section */
+
+#site-main .life-area > .grid {
+    column-gap: 1em;
+}
+
+#site-main .life-area .grid-images {
+    display: grid;
+    grid-template-columns: repeat(30, minmax(10px, 1fr));
+    grid-template-rows: repeat(10, minmax(100px, 1fr));
+    z-index: -1;
+}
+
+#site-main .life-area .grid-images .image-one {
+    grid-column-start: 1;
+    grid-column-end: 20;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    background: url('./images/img-accounting-1.jpg') no-repeat;
+    border-radius: 8px;
+    z-index: 0;
+}
+
+#site-main .life-area .grid-images .image-two {
+    grid-column-start: 7;
+    grid-column-end: 30;
+    grid-row-start: 4;
+    grid-row-end: 8;
+    background: url('./images/img-accounting-2.jpg') no-repeat;
+    border-radius: 8px;
+    filter: blur(1px);
+    z-index: -1;
+}
+
+#site-main .life-area .grid-images .image-three {
+    grid-column-start: 1;
+    grid-column-end: 27;
+    grid-row-start: 7;
+    grid-row-end: 10;
+    background: url('./images/img-accounting-3.jpg') no-repeat;
+    border-radius:  8px;
+    filter: blur(1px);
+    z-index: -2;
+}
+
+.background {
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    height: 5rem;
+    border-radius: 30px;
+    width: 100%;
+}
+
+.blur {
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(30px); 
+    height: 5rem;
+    border-radius: initial;
+  }
+
+.flex-display {
+    display: flex;
+}
+
+.center-item {
+    align-items: center;
+    justify-content: center;
+}
+
+.text-front {
+    z-index: 1;
+}
+
+/* Responsive */
+
+
 @media (min-width: 768px) {
     .sm-text-xl {
         font-size: 2.5em;
