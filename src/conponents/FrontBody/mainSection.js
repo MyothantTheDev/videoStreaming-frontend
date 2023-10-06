@@ -1,8 +1,43 @@
-import React, { Fragment} from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { PcDisplayHorizontal, Cpu, Globe } from 'react-bootstrap-icons';
+import {useServiceCount, useUserCount} from '../../countingHook/countup';
 
 const MainSection = () => {
+    // const [countService, setCountService] = useState(0);
+    // const [countingStarted, setCountingStarted] = useState(false);
+
+    // let intervalRef = useRef(null);
+    // let count = 0;
+
+    // const startCounting = () => {
+    //     intervalRef.current = setInterval(() => {
+    //     if (count < 30) {
+    //         count++;
+    //         setCountService(count);
+    //     } else {
+    //         clearInterval(intervalRef.current);
+    //     }
+    //     }, 10);
+    // };
+
+    // const handlerMouseEnter = () => {
+    //     if(!countingStarted){
+    //         startCounting();
+    //         setCountingStarted(true);
+    //     };
+    // }
+
+    // useEffect(() => {
+    //     // Clean up the interval when the component unmounts
+    //     return () => {
+    //     clearInterval(intervalRef.current);
+    //     };
+    // }, []);
+
+    const {countService, servicehandlerMouseEnter} = useServiceCount();
+    const {countUser, userhandlerMouseEnter} = useUserCount();
+
     return (
         <Fragment>
             <Helmet>
@@ -86,7 +121,10 @@ const MainSection = () => {
                         </div>
                     </div>
                 </section>
-                <section className='container mx-auto counting-area'>
+                <section onMouseEnter={() => {
+                    servicehandlerMouseEnter();
+                    userhandlerMouseEnter();
+                }} className='container mx-auto counting-area'>
                     <div className='grid cols-1-grid lg-cols-2-grid px-5'>
                         <div className='grid-one text-center px-5 md-text-left'>
                             <h1 className='pb-3 text-black2 font-simibold'>
@@ -106,8 +144,20 @@ const MainSection = () => {
                             <div className='count-box'>
                                 <div className='grid lg-cols-2-grid shadow-box'>
                                     <div className='item1 text-center'>
-                                        <div className='text-lg'>30+</div>
+                                        <div id='item1' className='text-xl text-dark2 font-simibold'>{ (countService == 0) ? 0 : `${countService}+` }</div>
                                         <span className='text-gray'>Total top Services</span>
+                                    </div>
+                                    <div className='item1 text-center'>
+                                        <div className='text-xl text-dark2 font-simibold'>24/7</div>
+                                        <span className='text-gray'>Services</span>
+                                    </div>
+                                    <div className='item1 text-center'>
+                                        <div className='text-xl text-dark2 font-simibold'>21%</div>
+                                        <span className='text-gray'>Positive Feedback</span>
+                                    </div>
+                                    <div className='item1 text-center'>
+                                        <div id='item4' className='text-xl text-dark2 font-simibold'>{ (countUser == 0) ? 0 : `${countUser}+` }</div>
+                                        <span className='text-gray'>Usual Users</span>
                                     </div>
                                 </div>
                             </div>
