@@ -15,12 +15,12 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isAuthenticated, error, loading } = useSelector(state => state.auth);
+  const { isAuthenticated, error } = useSelector(state => state.auth);
   
 
   useEffect(() => {
     if(isAuthenticated) {
-      navigate('/');
+      navigate('/user/lounge/');
     }
 
     if(error){
