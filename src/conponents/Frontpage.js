@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavSection from './Nav/Navbar';
-import MainSection from './FrontBody/mainSection';
-import Footer from './Footer/footer';
+import NavSection from './layout/Navbar';
+import MainSection from './layout/mainSection';
+import Footer from './layout/footer';
 
 const FrontPage = () => {
     return (
