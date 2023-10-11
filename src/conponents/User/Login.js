@@ -63,10 +63,10 @@ const Login = () => {
                     <Form  onSubmit={submitHandler}>
                       <Form.Group className='mb-3'>
                         <Row className='justify-content-center mt-4'>
-                          <Form.Label className='col-md-3 col-auto'>Username</Form.Label>
+                          <Form.Label className='col-md-3 col-auto'>Email</Form.Label>
                         </Row>
                         <Row className='justify-content-center'>
-                          <Form.Control className='w-75' placeholder='Enter username' value={email} 
+                          <Form.Control className='w-75' placeholder='Enter email' value={email} 
                           onChange={(e)=> setEmail(e.target.value)}/>
                         </Row>
                       </Form.Group>
