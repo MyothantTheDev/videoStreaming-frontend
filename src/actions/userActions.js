@@ -51,12 +51,9 @@ export const register = (userData) => async (dispatch) => {
 export const loadUser = (userData) => async (dispatch) => {
 	try {
 			dispatch({ type: LOAD_USER_REQUEST })
-			const config = {
-				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
-			}
-			const { data } = await axios.post('api/v1/me', userData, config)
+
+			const { data } = await axios.get('api/v1/me')
+			
 			dispatch({
 				type: LOAD_USER_SUCCESS,
 				payload: data.user
