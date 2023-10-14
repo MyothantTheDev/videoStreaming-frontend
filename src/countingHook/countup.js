@@ -18,7 +18,7 @@ export function useServiceCount() {
     }
 
     const servicehandlerMouseEnter = () => {
-        if(!countingStarted){
+        if(!countingStarted) {
             serviceCount();
             setCountingStarted(true);
         };

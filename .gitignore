@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#fake data
+data/
+
 # production
 /build
 

@@ -285,6 +285,28 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
+/* AdminPanel */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on Hover */
+
+::-webkit-scrollbar-track:hover {
+  background: #555;
+}
+
 @keyframes rotationBack {
   0% {
     transform: rotate(0deg);

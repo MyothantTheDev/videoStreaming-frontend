@@ -21,7 +21,7 @@ const Login = () => {
 
   useEffect(() => {
     if(isAuthenticated) {
-      if (user.role == 'admin') {
+      if (user.role === 'admin') {
         navigate('/');
       } else {
         navigate('/login');
@@ -32,7 +32,7 @@ const Login = () => {
       dispatch(clearErrors());
     }
 
-  }, [dispatch, isAuthenticated, error, navigate])
+  }, [dispatch, isAuthenticated, error, user, navigate])
 
   const submitHandler = (e) => {
     e.preventDefault();

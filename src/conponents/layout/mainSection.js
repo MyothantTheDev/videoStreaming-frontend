@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { PcDisplayHorizontal, Cpu, Globe } from 'react-bootstrap-icons';
 import {useServiceCount, useUserCount} from '../../countingHook/countup';
@@ -99,7 +99,10 @@ const MainSection = () => {
                         </div>
                     </div>
                 </section>
-                <section className='container mx-auto life-area'>
+                <section className='container mx-auto life-area' onMouseLeave={() => {
+                    servicehandlerMouseEnter();
+                    userhandlerMouseEnter();
+                }}>
                     <div className='grid cols-1-grid lg-cols-2-grid px-5'>
                         <div className='grid-images'>
                             <div className='image-one'></div>
@@ -121,10 +124,10 @@ const MainSection = () => {
                         </div>
                     </div>
                 </section>
-                <section onMouseEnter={() => {
+                <section className='container mx-auto counting-area' onTouchStart={() => {
                     servicehandlerMouseEnter();
                     userhandlerMouseEnter();
-                }} className='container mx-auto counting-area'>
+                        }}>
                     <div className='grid cols-1-grid lg-cols-2-grid px-5'>
                         <div className='grid-one text-center px-5 md-text-left'>
                             <h1 className='pb-3 text-black2 font-simibold'>
@@ -144,7 +147,7 @@ const MainSection = () => {
                             <div className='count-box'>
                                 <div className='grid lg-cols-2-grid shadow-box'>
                                     <div className='item1 text-center'>
-                                        <div id='item1' className='text-xl text-dark2 font-simibold'>{ (countService == 0) ? 0 : `${countService}+` }</div>
+                                        <div id='item1' className='text-xl text-dark2 font-simibold'>{ (countService === 0) ? 0 : `${countService}+` }</div>
                                         <span className='text-gray'>Total top Services</span>
                                     </div>
                                     <div className='item1 text-center'>
@@ -156,7 +159,7 @@ const MainSection = () => {
                                         <span className='text-gray'>Positive Feedback</span>
                                     </div>
                                     <div className='item1 text-center'>
-                                        <div id='item4' className='text-xl text-dark2 font-simibold'>{ (countUser == 0) ? 0 : `${countUser}+` }</div>
+                                        <div id='item4' className='text-xl text-dark2 font-simibold'>{ (countUser === 0) ? 0 : `${countUser}+` }</div>
                                         <span className='text-gray'>Usual Users</span>
                                     </div>
                                 </div>
