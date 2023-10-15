@@ -7,6 +7,10 @@
     z-index: -1;
 }
 
+#navigation {
+    z-index: 5;
+}
+
 /* ------ Banner area Style ------ */
 
 #site-main .banner-area .banner-title {
