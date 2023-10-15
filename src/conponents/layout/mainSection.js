@@ -99,7 +99,7 @@ const MainSection = () => {
                         </div>
                     </div>
                 </section>
-                <section className='container mx-auto life-area' onMouseLeave={() => {
+                <section className='container mx-auto life-area' onMouseEnter={() => {
                     servicehandlerMouseEnter();
                     userhandlerMouseEnter();
                 }}>
