@@ -22,9 +22,9 @@ const Login = () => {
   useEffect(() => {
     if(isAuthenticated) {
       if (user.role === 'admin') {
-        navigate('/');
+        navigate('/admin');
       } else {
-        navigate('/login');
+        navigate('/user');
       }
     }
 

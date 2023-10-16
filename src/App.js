@@ -1,6 +1,6 @@
 import './App.css';
 import Login from './conponents/User/Login';
-import FrontPage from './conponents/Frontpage';
+import FrontPage from './Frontpage';
 import { AdminDashBoard } from './adminDashboard';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
