@@ -7,11 +7,20 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import  PowerInputOutlined  from '@mui/icons-material/PowerInputOutlined';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../actions/userActions';
 
 const Topbar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
+
+    const dispatch = useDispatch();
+    const { user, loading } = useSelector(state => state.auth);
+    const logoutHandler = () => {
+        dispatch(logout());
+    }
 
     return (
         <Box display="flex" justifyContent="space-between" p={2}>
@@ -32,6 +41,9 @@ const Topbar = () => {
                 </IconButton>
                 <IconButton>
                     <PersonOutlineOutlinedIcon/>
+                </IconButton>
+                <IconButton>
+                    <PowerInputOutlined onClick={logoutHandler} />
                 </IconButton>
             </Box>
         </Box>
