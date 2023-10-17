@@ -3,6 +3,7 @@ import Login from './conponents/User/Login';
 import FrontPage from './Frontpage';
 import { AdminDashBoard } from './adminDashboard';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import ProtectedRoute from './Routes';
 
 function App() {
 
@@ -10,9 +11,11 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<FrontPage/>} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/admin' element={<AdminDashBoard />} />
+          <Route path='/' Component={FrontPage} />
+          <Route path='/login' Component={Login} />
+          <Route path='/admin' Component={ProtectedRoute} >
+            <Route path='dashboard' Component={AdminDashBoard}/>
+          </Route>
         </Routes>
       </Router>
     </div>

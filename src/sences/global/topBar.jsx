@@ -1,5 +1,5 @@
 import { Box, IconButton, useTheme } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ColorModeContext, tokens } from '../../theme';
 import { InputBase } from '@mui/material';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
@@ -7,9 +7,10 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import  PowerInputOutlined  from '@mui/icons-material/PowerInputOutlined';
+import PowerSettingsNewOutlinedIcon from '@mui/icons-material/PowerSettingsNewOutlined';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userActions';
+import { Navigate } from 'react-router-dom';
 
 const Topbar = () => {
     const theme = useTheme();
@@ -17,10 +18,16 @@ const Topbar = () => {
     const colorMode = useContext(ColorModeContext);
 
     const dispatch = useDispatch();
-    const { user, loading } = useSelector(state => state.auth);
+    const { isAuthenticated } = useSelector(state => state.auth);
     const logoutHandler = () => {
         dispatch(logout());
     }
+
+    useEffect( () => {
+        if (!isAuthenticated) {
+            <Navigate to='/' />
+        }
+    })
 
     return (
         <Box display="flex" justifyContent="space-between" p={2}>
@@ -43,7 +50,7 @@ const Topbar = () => {
                     <PersonOutlineOutlinedIcon/>
                 </IconButton>
                 <IconButton>
-                    <PowerInputOutlined onClick={logoutHandler} />
+                    <PowerSettingsNewOutlinedIcon onClick={logoutHandler} />
                 </IconButton>
             </Box>
         </Box>
