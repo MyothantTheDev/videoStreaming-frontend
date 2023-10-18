@@ -287,6 +287,21 @@ body {
 
 /* AdminPanel */
 
+.app,
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+.pro-sidebar {
+  background-color: #353535 !important;
+}
+
+.app{
+  display: flex;
+  position: relative;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

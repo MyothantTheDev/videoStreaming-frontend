@@ -3,7 +3,7 @@ import Login from './conponents/User/Login';
 import FrontPage from './Frontpage';
 import { AdminDashBoard } from './adminDashboard';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import ProtectedRoute from './Routes';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
 
