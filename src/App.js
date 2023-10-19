@@ -13,8 +13,8 @@ function App() {
         <Routes>
           <Route path='/' Component={FrontPage} />
           <Route path='/login' Component={Login} />
-          <Route path='/admin' Component={ProtectedRoute} >
-            <Route path='dashboard' Component={AdminDashBoard}/>
+          <Route path='/account' Component={ProtectedRoute} >
+            <Route path='admin' Component={AdminDashBoard}/>
           </Route>
         </Routes>
       </Router>

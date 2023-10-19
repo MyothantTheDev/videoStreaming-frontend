@@ -58,6 +58,11 @@
   --bg-gradient-peach: linear-gradient(to right, #fff7f3, #fff7f3);
 }
 
+#root, html, .App {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: 'Poppins' !important;
   width: 100%;
@@ -288,7 +293,7 @@ body {
 /* AdminPanel */
 
 .app,
-.content {
+.Content {
   height: 100%;
   width: 100%;
 }

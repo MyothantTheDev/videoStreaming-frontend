@@ -12,11 +12,22 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { useSelector } from "react-redux";
 import "react-pro-sidebar/dist/css/styles.css";
 
+const Item = ({title, to, icon, selected, setSelected}) => {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
+    return (
+        <MenuItem active={selected === title} style={{ color: colors.grey[100]}} onClick={() => setSelected(title)} icon={icon}>
+            <Typography>{title}</Typography>
+            <Link to={to} />
+        </MenuItem>
+    )
+}
+
 const SideBar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false);
-    const [selected, setSelected] = useState('Dashboard');
+    const [selected, setSelected] = useState('Home');
     const {user} = useSelector(state => state.auth);
     
     return (
@@ -57,7 +68,7 @@ const SideBar = () => {
                                     ml="15px"
                                 >
                                     <Typography variant="h3" color={colors.grey[100]}>
-                                        ADMINS PANLE
+                                        ADMINS 
                                     </Typography>
                                     <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                                         <MenuOutlinedIcon />
@@ -69,6 +80,9 @@ const SideBar = () => {
                     {
                         !isCollapsed && (
                             <Box mb="25px">
+                                <Box display="flex" justifyContent="center" alignItems="center">
+                                    <PersonOutlineOutlinedIcon sx={{fontSize: 100}} />
+                                </Box>
                                 <Box textAlign='center'>
                                     <Typography variant="h2" color={colors.grey[100]} fontWeight='bold' sx={{m: "10px 0 0 0"}}>
                                         {`${user.username}`.toUpperCase()}
@@ -82,6 +96,14 @@ const SideBar = () => {
                             </Box>
                         )
                     }
+
+                    {/* Menu Items */}
+                    <Box paddingLeft={ isCollapsed ? undefined : "10%"}>
+                        <Item title="Home" to="/" icon={<Groups2OutlinedIcon />} selected={selected} setSelected={setSelected}/>
+                        <Item title="Students" to="/admin/students" icon={<Groups2OutlinedIcon />} selected={selected} setSelected={setSelected}/>
+                        <Item title="Batches" to="/admin/batches" icon={<ClassOutlinedIcon />} selected={selected} setSelected={setSelected}/>
+                        <Item title="Videos" to="/admin/video" icon={<PersonalVideoOutlinedIcon />} selected={selected} setSelected={setSelected}/>
+                    </Box>
                 </Menu>
             </ProSidebar>
         </Box>

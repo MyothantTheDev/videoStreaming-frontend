@@ -25,7 +25,7 @@ const Login = () => {
     saveState('user', store.getState().auth);
     if(isAuthenticated) {
       if (user.role === 'admin') {
-        navigate('/admin/dashboard');
+        navigate('/account/admin');
       } else {
         navigate('/user');
       }

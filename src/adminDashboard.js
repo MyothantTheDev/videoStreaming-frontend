@@ -3,6 +3,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import Topbar from './sences/global/topBar';
 import SideBar from './sences/global/SideBar';
 import { Route, Routes } from 'react-router-dom';
+import Dashboard from './sences/dashboard';
+
 
 
 export const AdminDashBoard = () => {
@@ -17,7 +19,7 @@ export const AdminDashBoard = () => {
                     <main className="Content">
                         <Topbar/>
                         <Routes>
-                            <Route path='' />
+                            <Route path='/' element={ <Dashboard /> }/>
                             {/* <Route path='students' /> */}
                             {/* <Route path='batch' /> */}
                             {/* <Route path='videos' /> */}
