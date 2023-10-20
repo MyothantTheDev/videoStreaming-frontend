@@ -1,4 +1,4 @@
-import { ALL_STUDENTS_REQUEST, ALL_STUDENTS_SUCCESS, ALL_STUDENTS_FAIL, CLEAR_ERRORS } from "../constants/studentContanst";
+import { ALL_STUDENTS_REQUEST, ALL_STUDENTS_SUCCESS, ALL_STUDENTS_FAIL, CLEAR_ERRORS } from "../constants/studentConstant";
 
 export const studentsReducer = (state = { students : []}, action) =>  {
     switch (action.type) {
