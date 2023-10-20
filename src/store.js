@@ -3,10 +3,13 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { authReducer } from './reducers/userReducers';
+import { studentsReducer } from './reducers/studentReducers';
+
 import { loadState } from './saveState';
 
 const reducer = combineReducers({
     auth: authReducer,
+    student: studentsReducer,
 })
 
 let initState = {
