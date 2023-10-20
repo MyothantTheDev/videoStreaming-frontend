@@ -4,7 +4,7 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import PersonalVideoOutlinedIcon from '@mui/icons-material/PersonalVideoOutlined';
@@ -99,7 +99,7 @@ const SideBar = () => {
 
                     {/* Menu Items */}
                     <Box paddingLeft={ isCollapsed ? undefined : "10%"}>
-                        <Item title="Home" to="/" icon={<Groups2OutlinedIcon />} selected={selected} setSelected={setSelected}/>
+                        <Item title="Home" to="/" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}/>
                         <Item title="Students" to="/admin/students" icon={<Groups2OutlinedIcon />} selected={selected} setSelected={setSelected}/>
                         <Item title="Batches" to="/admin/batches" icon={<ClassOutlinedIcon />} selected={selected} setSelected={setSelected}/>
                         <Item title="Videos" to="/admin/video" icon={<PersonalVideoOutlinedIcon />} selected={selected} setSelected={setSelected}/>
