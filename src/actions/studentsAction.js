@@ -3,11 +3,11 @@ import { ALL_STUDENTS_REQUEST, ALL_STUDENTS_SUCCESS, ALL_STUDENTS_FAIL, CLEAR_ER
 
 //Get ALL STUDENTS
 
-export const getStudents = () => async (disptach) => {
+export const getAllStudents = () => async (disptach) => {
     try {
 
         disptach({ type: ALL_STUDENTS_REQUEST });
-        const { data } = await axios.get('/api/v1/students');
+        const { data } = await axios.get('/api/v1/admin/students');
         disptach({
             type: ALL_STUDENTS_SUCCESS,
             payload: data
@@ -16,7 +16,7 @@ export const getStudents = () => async (disptach) => {
     } catch (error) {
         disptach({
             type: ALL_STUDENTS_FAIL,
-            payload: error.response.data.message
+            payload: error
         })
     }
 }

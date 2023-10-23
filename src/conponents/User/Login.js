@@ -47,7 +47,7 @@ const Login = () => {
         {<Helmet>
           <link rel='stylesheet' href='/login.css' />
         </Helmet>}
-        <Container className='center'>
+        <Container className='center' id='loginArea'>
           {
             loading ? <Loader/> : (
               <Row className='gx-0 justify-content-md-center'>
