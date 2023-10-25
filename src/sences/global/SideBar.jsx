@@ -99,7 +99,7 @@ const SideBar = () => {
 
                     {/* Menu Items */}
                     <Box paddingLeft={ isCollapsed ? undefined : "10%"}>
-                        <Item title="Home" to="/" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}/>
+                        <Item title="Home" to="/account/admin" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}/>
                         <Item title="Students" to="/admin/students" icon={<Groups2OutlinedIcon />} selected={selected} setSelected={setSelected}/>
                         <Item title="Batches" to="/admin/batches" icon={<ClassOutlinedIcon />} selected={selected} setSelected={setSelected}/>
                         <Item title="Videos" to="/admin/video" icon={<PersonalVideoOutlinedIcon />} selected={selected} setSelected={setSelected}/>
