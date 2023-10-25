@@ -11,8 +11,8 @@ export const studentsReducer = (state = { students : []}, action) =>  {
         case ALL_STUDENTS_SUCCESS:
             return {
                 loading: false,
-                students: action.payload,
-                studentsCount: action.payload.studentsCount
+                students: action.payload.student,
+                studentsCount: action.payload.count
             };
 
         case ALL_STUDENTS_FAIL:
