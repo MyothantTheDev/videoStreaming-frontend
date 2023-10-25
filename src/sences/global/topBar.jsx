@@ -1,10 +1,10 @@
 import { Box, IconButton, useTheme } from '@mui/material';
 import { useContext, useEffect } from 'react';
 import { ColorModeContext, tokens } from '../../theme';
-import { InputBase } from '@mui/material';
+// import { InputBase } from '@mui/material';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+// import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import PowerSettingsNewOutlinedIcon from '@mui/icons-material/PowerSettingsNewOutlined';
@@ -32,10 +32,10 @@ const Topbar = () => {
     return (
         <Box display="flex" justifyContent="space-between" p={2}>
             <Box display="flex" bgcolor={colors.primary[400]} borderRadius="3px">
-                <InputBase sx={{ ml:2, flex: 1}} placeholder="Search" />
+                {/* <InputBase sx={{ ml:2, flex: 1}} placeholder="Search" />
                 <IconButton type='button' sx={{ p:1 }}>
                     <SearchOutlinedIcon/>
-                </IconButton>
+                </IconButton> */}
             </Box>
             <Box display='flex'>
                 <IconButton>
