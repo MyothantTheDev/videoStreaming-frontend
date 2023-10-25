@@ -12,7 +12,7 @@ export const getAllStudents = () => async (disptach) => {
             type: ALL_STUDENTS_SUCCESS,
             payload: data
         })
-
+        
     } catch (error) {
         disptach({
             type: ALL_STUDENTS_FAIL,
