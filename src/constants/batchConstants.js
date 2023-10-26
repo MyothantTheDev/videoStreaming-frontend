@@ -1,0 +1,5 @@
+export const ALL_BATCH_REQUEST = "ALL_BATCH_REQUEST";
+export const ALL_BATCH_SUCCESS = "ALL_BATCH_SUCCESS";
+export const ALL_BATCH_FAIL = "ALL_BATCH_FAIL";
+
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

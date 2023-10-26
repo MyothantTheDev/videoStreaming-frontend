@@ -4,12 +4,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { authReducer } from './reducers/userReducers';
 import { studentsReducer } from './reducers/studentReducers';
+import { batchReducer } from './reducers/batchReducer';
 
 import { loadState } from './saveState';
 
 const reducer = combineReducers({
     auth: authReducer,
     student: studentsReducer,
+    batch: batchReducer
 })
 
 let initState = {
