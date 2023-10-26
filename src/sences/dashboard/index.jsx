@@ -1,13 +1,17 @@
-import { Box } from "@mui/material";
+import { Box, useTheme, IconButton, InputBase } from "@mui/material";
 import Header from "../../conponents/layout/Header";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllStudents } from "../../actions/studentsAction"
 import Loader from "../../conponents/layout/loader";
+import { tokens } from "../../theme";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const Dashboard = () => {
 
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     const dispatch = useDispatch();
     const { loading, students, studentsCount } = useSelector(state => state.student);
 
@@ -46,9 +50,36 @@ const Dashboard = () => {
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
             </Box>
+            <Box display="flex" width='30%' bgcolor={colors.primary[400]} sx={{ marginBottom: "30px" }} borderRadius="3px">
+                <InputBase sx={{ ml:2, flex: 1 }} placeholder="Search" />
+                <IconButton type='button' sx={{ p:1 }}>
+                    <SearchOutlinedIcon/>
+                </IconButton>
+            </Box> 
             {
                 !loading && (students.length) ? (
-                    <Box>
+                    <Box sx={{
+                        "& .MuiDataGrid-root": {
+                            border: 'none'
+                        },
+                        "& .MuiDataGrid-cell": {
+                            borderBottom: 'none'
+                        },
+                        "& .name-column--cell": {
+                            color: colors.greenAccent[300]
+                        },
+                        "& .MuiDataGrid-virtualScroller": {
+                            backgroundColor: colors.primary[400]
+                        },
+                        "& .MuiDataGrid-columnHeaders": {
+                            backgroundColor: colors.blueAccent[700],
+                            borderBottom: 'none'
+                        },
+                        "& .MuiDataGrid-footerContainer": {
+                            borderTop: 'none',
+                            backgroundColor: colors.blueAccent[700]
+                        }
+                    }}>
                         <DataGrid columns={columns} rows={DataRow()}/>
                     </Box>
                 ) : <Loader />
