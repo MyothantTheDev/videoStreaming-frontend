@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { getAllBatch } from "../../actions/batchAction";
 import Loader from "../../conponents/layout/loader";
 import { register } from "../../actions/studentsAction";
+import NotiAlert from "../../conponents/layout/Alert";
 
 const initialValues = {
     firstName: '',
@@ -39,6 +40,7 @@ const Student = () => {
 
     const dispatch = useDispatch();
     const { loading, batch } = useSelector(state => state.batch);
+    const { message } = useSelector(state => state.student);
 
     useEffect(() => {
         dispatch(getAllBatch());
@@ -49,6 +51,9 @@ const Student = () => {
             <Box display="flex" justifyContent="space-between" alignItems="center">
                 <Header title="Create User" subtitle="Create Student Account" />
             </Box>
+                {
+                    message ? <NotiAlert message={message} /> : undefined
+                }
             <Box m="20px" >
                 <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={studentSchema}>
                     {({values, errors, touched, handleBlur, handleChange, handleSubmit}) => (
