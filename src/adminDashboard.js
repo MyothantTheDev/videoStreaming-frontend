@@ -22,7 +22,7 @@ export const AdminDashBoard = () => {
                         <Routes>
                             <Route path='/' element={ <Dashboard /> }/>
                             <Route path='students' element={<Student />} />
-                            {/* <Route path='batch' /> */}
+                            {/* <Route path='batch' element={}/> */}
                             {/* <Route path='videos' /> */}
                         </Routes>
                     </main>
