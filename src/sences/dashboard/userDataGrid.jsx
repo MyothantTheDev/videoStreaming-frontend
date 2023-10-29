@@ -14,11 +14,12 @@ import {
 const UserDataGrid = () => {
 
     const [rows, setRows] = useState([]);
-
     const [dataFetched, setDataFetched] = useState(false);
+
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const dispatch = useDispatch();
+    
     const { loading, students, studentsCount } = useSelector(state => state.student);
 
     // DATA FETCH
