@@ -34,13 +34,6 @@ const Student = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
     
     const handleFormSubmit = (values) => {
-        // const formData = new FormData();
-        // formData.set('firstName', values.firstName);
-        // formData.set('lastName', values.lastName);
-        // formData.set('username', values.username);
-        // formData.set('email', values.email);
-        // formData.set('password', values.password);
-        // formData.set('batchId', values.batchId);
         dispatch(register(values));
     }
 
@@ -59,7 +52,7 @@ const Student = () => {
             <Box m="20px" >
                 <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={studentSchema}>
                     {({values, errors, touched, handleBlur, handleChange, handleSubmit}) => (
-                        <form onSubmit={handleSubmit} encType="multipart/form-data" >
+                        <form onSubmit={handleSubmit} encType="application/json" >
                             <Box display='grid' gap="30px" gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                                 sx={{
                                     "& > div": {gridColumn : isNonMobile ? undefined : "span 4"}
