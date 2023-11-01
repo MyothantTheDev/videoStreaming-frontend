@@ -5,7 +5,8 @@ import SideBar from './sences/global/SideBar';
 import { Route, Routes } from 'react-router-dom';
 import Dashboard from './sences/dashboard';
 import Student from './sences/students';
-
+import Batch from './sences/batch';
+import Video from './sences/video';
 
 
 export const AdminDashBoard = () => {
@@ -22,8 +23,8 @@ export const AdminDashBoard = () => {
                         <Routes>
                             <Route path='/' element={ <Dashboard /> }/>
                             <Route path='students' element={<Student />} />
-                            {/* <Route path='batch' element={}/> */}
-                            {/* <Route path='videos' /> */}
+                            <Route path='batches' element={<Batch />} />
+                            <Route path='video'  element={<Video />} />
                         </Routes>
                     </main>
                 </div>
