@@ -141,7 +141,7 @@ const Student = () => {
                                         error={!!touched.batchId && !!errors.batchId}
                                         sx={{gridColumn: "span 2"}}>
                                             {
-                                                !loading && (batch.length) ? (
+                                                !loading && (Array.isArray(batch)) ? (
                                                     batch.map(({_id, name}, index) => <MenuItem key={index} value={`${_id}`} >{name}</MenuItem>)
                                                 ) : <Loader />
                                             }
