@@ -7,11 +7,13 @@ import { studentsReducer } from './reducers/studentReducers';
 import { batchReducer } from './reducers/batchReducer';
 
 import { loadState } from './saveState';
+import { videoReducer } from './reducers/videoReducer';
 
 const reducer = combineReducers({
     auth: authReducer,
     student: studentsReducer,
-    batch: batchReducer
+    batch: batchReducer,
+    video: videoReducer,
 })
 
 let initState = {
