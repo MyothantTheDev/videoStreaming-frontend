@@ -34,7 +34,7 @@ const UserDataGrid = () => {
     // UPDATE DATA ROW
 
     useEffect(() => {
-        if (students.length > 0) {
+        if (students) {
             const cleanedData = [];
             for (let i = 0; i < studentsCount; i++) {
                 const id = i + 1;
