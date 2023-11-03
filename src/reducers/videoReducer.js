@@ -1,7 +1,7 @@
 import { ALL_VIDEO_REQUEST, ALL_VIDEO_SUCCESS, ALL_VIDEO_FAIL, 
 REGISTER_VIDEO_REQUEST, REGISTER_VIDEO_SUCCESS, REGISTER_VIDEO_FAIL, CLEAR_ERRORS } from "../constants/videoConstants";
 
-const videoReducer = (state = { video: [] }, action) => {
+export const videoReducer = (state = { video: [] }, action) => {
     switch (action.type) {
         case ALL_VIDEO_REQUEST:
         case REGISTER_VIDEO_REQUEST:
