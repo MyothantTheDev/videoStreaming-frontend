@@ -27,7 +27,7 @@ export const registerVideo = ( files ) => async (dispatch) => {
         dispatch({ type: REGISTER_VIDEO_REQUEST });
         const config = {
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
             }
         }
         const { data } = await axios.post('/api/v1/video/new', files, config);
