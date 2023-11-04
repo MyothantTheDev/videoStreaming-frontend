@@ -33,10 +33,13 @@ const Batch = () => {
 
     const { message } = useSelector(state => state.batch)
 
-    const handleFormSubmit = (values) => {
+    const handleFormSubmit = (values, { resetForm }) => {
         const matches = values.name.match(nameRegex)
         if (matches[0] === matches.input) {
             dispatch(newBatch(values));
+            resetForm({
+                values: initialValue
+            })
         } else {
             setErrorMsg('Batch name don\'t accept White Space. Try again!');
         }
