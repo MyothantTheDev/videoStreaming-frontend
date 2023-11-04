@@ -68,11 +68,14 @@ const Video = () => {
         fileInputRef.current.click();
     }
     
-    const handleFormSubmit = (values) => {
+    const handleFormSubmit = (values, { resetForm }) => {
         const formData = new FormData();
         formData.append('batchId', values.batchId);
         storeFiles.map(item => formData.append('file', item.file));
         dispatch(registerVideo(formData));
+        resetForm({
+            values: initialValues
+        })
     }
 
     //Read File Handler For Preview
