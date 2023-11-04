@@ -34,8 +34,11 @@ const Student = () => {
 
     const isNonMobile = useMediaQuery("(min-width:600px)");
     
-    const handleFormSubmit = (values) => {
+    const handleFormSubmit = (values, { resetForm } ) => {
         dispatch(register(values));
+        resetForm({
+            values: initialValues
+        })
     }
 
     const dispatch = useDispatch();
