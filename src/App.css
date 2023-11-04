@@ -292,9 +292,13 @@ body {
 
 /* AdminPanel */
 
-.app,
-.Content {
+.app {
   height: 100%;
+  width: 100%;
+}
+
+.Content {
+  height: 50%;
   width: 100%;
 }
 
