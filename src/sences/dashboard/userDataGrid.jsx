@@ -1,7 +1,7 @@
 import { Box, useTheme, IconButton, InputBase } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllStudents, deleteStudent } from "../../actions/studentsAction"
+import { getAllStudents, deleteStudent, clearErrors } from "../../actions/studentsAction"
 import Loader from "../../conponents/layout/loader";
 import { tokens } from "../../theme";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -20,7 +20,7 @@ const UserDataGrid = () => {
     const colors = tokens(theme.palette.mode);
     const dispatch = useDispatch();
     
-    const { loading, students, studentsCount } = useSelector(state => state.student);
+    const { loading, students, studentsCount, error } = useSelector(state => state.student);
 
     // DATA FETCH
 
@@ -30,6 +30,15 @@ const UserDataGrid = () => {
             setDataFetched(true);
         }
     },[dispatch, dataFetched])
+
+
+    // Clear Error
+
+    useEffect(() => {
+        if (error) {
+            dispatch(clearErrors());
+        }
+    },[dispatch,error])
 
     // UPDATE DATA ROW
 
