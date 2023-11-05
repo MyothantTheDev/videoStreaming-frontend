@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, clearErrors } from '../../actions/userActions';
 import { Helmet } from 'react-helmet';
 import Loader from '../layout/loader';
-import { saveState } from '../../saveState';
-import store from '../../store';
+// import { saveState } from '../../saveState';
+// import store from '../../store';
 
 const Login = () => {
 
@@ -22,7 +22,7 @@ const Login = () => {
   
 
   useEffect(() => {
-    saveState('user', store.getState().auth);
+    // saveState('user', store.getState().auth);
     if(isAuthenticated) {
       if (user.role === 'admin') {
         navigate('/account/admin');

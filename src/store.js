@@ -16,13 +16,15 @@ const reducer = combineReducers({
     video: videoReducer,
 })
 
-let initState = {
-    auth: loadState('user') ? loadState('user'): {
-        isAuthenticated: false,
-        loading: false,
-        user: null
-    },
-}
+// let initState = {
+//     auth: loadState('user') ? loadState('user'): {
+//         isAuthenticated: false,
+//         loading: false,
+//         user: null
+//     },
+// }
+
+let initState = {};
 
 const middleware = [thunk]
 const store = createStore(reducer, initState, composeWithDevTools(applyMiddleware(...middleware)))
