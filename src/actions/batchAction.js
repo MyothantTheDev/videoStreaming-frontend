@@ -15,6 +15,10 @@ export const getAllBatch = () => async (disptach) => {
         })
         
     } catch (error) {
+
+        console.log(error.response.message);
+        console.log(error.request.message);
+
         disptach({
             type: ALL_BATCH_FAIL,
             payload: error
