@@ -65,6 +65,33 @@ export const deleteStudent = (id) => async (dispatch) => {
 	}
 }
 
+//DELETE MULTI STUDENT
+
+export const deleteMulitStudent = (idList) => async (dispatch) => {
+	try {
+		dispatch({ type: DELETE_STUDENT_REQUEST })
+		const config = {
+			headers: {
+				'Content-Type' : 'application/json'
+			},
+			data: {
+				"id": idList
+			}
+		}
+		const { data } = await axios.delete('/api/v1/admin/students', config);
+		dispatch({
+			type: DELETE_STUDENT_SUCCESS,
+			payload: data
+		})
+	} catch (error) {
+		console.log(error);
+		dispatch({
+			type: DELETE_STUDENT_FAIL,
+			payload: error
+		})
+	}
+}
+
 //CLEAR ERROR
 
 export const clearErrors = () => async (dispatch) => {
