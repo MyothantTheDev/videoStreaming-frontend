@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login, clearErrors } from '../../actions/userActions';
 import { Helmet } from 'react-helmet';
 import Loader from '../layout/loader';
-// import { saveState } from '../../saveState';
-// import store from '../../store';
+import { saveState } from '../../saveState';
+import store from '../../store';
 
 const Login = () => {
 
@@ -22,7 +22,7 @@ const Login = () => {
   
 
   useEffect(() => {
-    // saveState('user', store.getState().auth);
+    saveState('user', store.getState().auth);
     if(isAuthenticated) {
       if (user.role === 'admin') {
         navigate('/account/admin');
@@ -37,9 +37,35 @@ const Login = () => {
 
   }, [dispatch, isAuthenticated, error, user, navigate])
 
+  // Hash Device Infomation
+
+  function hashObject(obj) {
+    var str = JSON.stringify(obj);
+    var hash = 0, i, chr;
+    for (i = 0; i < str.length; i++) {
+      chr = str.charCodeAt(i);
+      hash = (hash << 5) - hash + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    
+    //Device FringerPrint
+
+    const browserInfo = {
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+      platform: navigator.platform || "Win64",
+      screenWidth: window.screen.width,
+      screenHeight: window.screen.height,
+      devicePixelRatio: window.devicePixelRatio || 1, // Default to 1 if not supported
+    };
+    const device = hashObject(browserInfo);
+
+    dispatch(login(email, password, device));
   }
 
   return (
