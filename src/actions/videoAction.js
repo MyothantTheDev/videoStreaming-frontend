@@ -16,7 +16,26 @@ export const getAllVideo = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ALL_VIDEO_FAIL,
-            payload: error 
+            payload: error.response.data
+        })
+        console.log('Error: ', error.response.data);
+    }
+}
+
+// GET 1 BATCH VIDEOS
+
+export const getBatchVideo = ( batchId ) => async (dispatch) => {
+    try {
+        dispatch({type: ALL_VIDEO_REQUEST });
+        const { data }  = await axios.get('/api/v1/video', { params: {batchId}} )
+        dispatch({
+            type: ALL_VIDEO_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: ALL_VIDEO_FAIL,
+            payload: error
         })
     }
 }
@@ -28,7 +47,7 @@ export const registerVideo = ( files ) => async (dispatch) => {
         dispatch({ type: REGISTER_VIDEO_REQUEST });
         const config = {
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'video/mp4',
             }
         }
         const { data } = await axios.post('/api/v1/video/new', files, config);
@@ -51,6 +70,37 @@ export const deleteVideo = ( deleteID ) => async (dispatch) => {
         dispatch({ type: DELETE_VIDEO_REQUEST });
 
         const { data } = await axios.delete(`/api/v1/video/delete?id=${deleteID}`);
+
+        dispatch({
+            type: DELETE_VIDEO_SUCCESS,
+            payload: data
+
+        })
+        
+    } catch (error) {
+        dispatch({
+            type: DELETE_VIDEO_FAIL,
+            payload: error
+        })
+    }
+}
+
+// DELETE MULTI VIDEO
+
+export const deleteMultiVideo = ( idList ) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_VIDEO_REQUEST });
+
+        const config = {
+            headers : {
+                'Content-Type': 'application/json'
+            },
+            data: {
+                'id': idList
+            }
+        }
+
+        const { data } = await axios.delete('/api/v1/video/delete', config);
 
         dispatch({
             type: DELETE_VIDEO_SUCCESS,
