@@ -1,7 +1,7 @@
 import { Box, useTheme, IconButton, InputBase } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideo, deleteVideo, clearErrors } from "../../actions/videoAction";
+import { getAllVideo, deleteVideo, deleteMultiVideo, clearErrors } from "../../actions/videoAction";
 import Loader from "../../conponents/layout/loader";
 import { tokens } from "../../theme";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -10,12 +10,14 @@ import {
     DataGrid,
     GridActionsCellItem
   } from '@mui/x-data-grid';
+import ToolBar from "./ToolBar";
 
 
 const VideoDataGrid = () => {
 
     const [rows, setRows] = useState([]);
     const [dataFetched, setDataFetched] = useState(false);
+    const [selectedRowModels, setSelectedRowModels] = useState([]);
 
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -41,7 +43,7 @@ const VideoDataGrid = () => {
     //Clean Data For Row
     useEffect(() => {
         const cleanedData = [];
-        if (video) {
+        if (Array.isArray(video)) {
             for (let i = 0; i < video.length; i++) {
                 const id = i + 1;
                 const item = video[i];
@@ -77,6 +79,27 @@ const VideoDataGrid = () => {
         ]
     }
     ];
+
+    //Row Selection
+    const selectedRow = (selectedRows) => {
+        setSelectedRowModels(selectedRows);
+    }
+
+    const CustomToolBar = () => {
+        return (
+            <ToolBar action={handleSelectedRow}/>
+        )
+    }
+
+    const handleSelectedRow = () => {
+        const removedRows = []
+        for (let index = 0; index < selectedRowModels.length; index++) {
+            const id = selectedRowModels[index];
+            const filterRow = rows.filter( row => row.id === id);
+            removedRows.push(filterRow[0]._id);
+        }
+        dispatch(deleteMultiVideo(removedRows));
+    }
 
     return (
         <Box m="20px">
@@ -114,6 +137,17 @@ const VideoDataGrid = () => {
                         columns={columns} 
                         rows={rows}
                         editMode="rows"
+                        initialState={{
+                            pagination: {
+                                paginationModel: {
+                                    pageSize: 5
+                                }
+                            }
+                        }}
+                        pageSizeOptions={[5]}
+                        checkboxSelection
+                        onRowSelectionModelChange={selectedRow}
+                        slots={{ toolbar: CustomToolBar}}
                     />
                 </Box>)
             }
