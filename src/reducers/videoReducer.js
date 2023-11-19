@@ -1,6 +1,7 @@
 import { ALL_VIDEO_REQUEST, ALL_VIDEO_SUCCESS, ALL_VIDEO_FAIL, 
 REGISTER_VIDEO_REQUEST, REGISTER_VIDEO_SUCCESS, REGISTER_VIDEO_FAIL, 
-DELETE_VIDEO_REQUEST, DELETE_VIDEO_SUCCESS, DELETE_VIDEO_FAIL, CLEAR_ERRORS } from "../constants/videoConstants";
+DELETE_VIDEO_REQUEST, DELETE_VIDEO_SUCCESS, DELETE_VIDEO_FAIL, 
+COMBINE_FILE_REQUEST, COMBINE_FILE_SUCCESS, COMBINE_FILE_FAIL,CLEAR_ERRORS } from "../constants/videoConstants";
 
 export const videoReducer = (state = { video: [] }, action) => {
     switch (action.type) {
@@ -53,5 +54,37 @@ export const videoReducer = (state = { video: [] }, action) => {
     
         default:
             return state;
+    }
+}
+
+export const combineVideoReducer = ( state = {}, action ) => {
+    switch (action.type) {
+        case COMBINE_FILE_REQUEST:
+            return {
+                loading: true,
+                message: null,
+            };
+
+        case COMBINE_FILE_SUCCESS:
+            return {
+                loading: false,
+                message: action.payload.message,
+                video: action.payload.video,
+            }
+
+        case COMBINE_FILE_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null,
+            }
+    
+        default:
+            return state
     }
 }
