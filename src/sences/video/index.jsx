@@ -13,6 +13,7 @@ import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternate
 import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import { tokens } from "../../theme";
+import { requestCombineFiles } from "../../actions/combineVideoAction";
 
 const initialValues = {
     files: [],
@@ -22,6 +23,9 @@ const initialValues = {
 const videoSchema = yup.object().shape({
     batchId: yup.string().required('required')
 })
+
+
+//Video Component
 
 const Video = () => {
 
@@ -34,11 +38,12 @@ const Video = () => {
     const [storeFiles, setStoreFiles] = useState([]);
 
     let deletedFiles = '';
+
     //color theme
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    //Event
+    //Event Change
 
     const event = new Event("change", { bubbles:true });
 
@@ -67,15 +72,66 @@ const Video = () => {
     const handleFileClick = () => {
         fileInputRef.current.click();
     }
-    
-    const handleFormSubmit = (values, { resetForm }) => {
-        const formData = new FormData();
-        formData.append('batchId', values.batchId);
-        storeFiles.map(item => formData.append('file', item.file));
-        dispatch(registerVideo(formData));
-        resetForm({
-            values: initialValues
-        })
+
+    //Generate Id 
+    const generateID = () => {
+        const timestamp = Date.now().toString(36);
+        const randomString = Math.random().toString(36).substring(2);
+
+        const id = (timestamp + randomString).substring(0, 8);
+        return id;
+    }
+
+    //Sumit Form Data to Server
+    const handleFormSubmit = async (values, { resetForm }) => {
+
+        try {
+
+            //Form For Assemble Data
+            const combineForm = {
+                batchId: values.batchId,
+                fileId: [],
+                title: [],
+                totalChunks: []
+            }
+
+            // Parallel Upload
+            const uploadPromise = [];
+
+            for (const storeFile of storeFiles) {
+                const id = generateID();
+                const chunks = await uploadFileChunks(storeFile.file);
+
+                combineForm.fileId.push(id);
+                combineForm.title.push(storeFile.file.name);
+                combineForm.totalChunks.push(chunks.length);
+
+                for (let index = 0; index < chunks.length; index++) {
+                    const file = chunks[index];
+                    const fd = new FormData();
+
+                    fd.append('batchId', values.batchId);
+                    fd.append('title', id);
+                    fd.append('index', index);
+                    fd.append('file', file);
+                    
+                    uploadPromise.push(dispatch(registerVideo(fd)));
+                }
+            }
+
+            await Promise.all(uploadPromise);
+
+            resetForm();
+            sendCombineForm(combineForm);
+            
+        } catch (error) {
+            console.error("Error uploading files: ", error);
+        }
+
+    }
+
+    const sendCombineForm = (dataForm) => {
+        dispatch(requestCombineFiles(dataForm));
     }
 
     //Read File Handler For Preview
@@ -103,18 +159,54 @@ const Video = () => {
 
     //Remove Selected Files
     const handleRemoveFile = (name) => {
+        
         const filterFiles = [];
         deletedFiles = name;
-        for (const file of storeFiles) {
-            if (file.file.name !== name) {
-                filterFiles.push(file);
-            }
 
-            if (filterFiles.length + 1 === storeFiles.length) {
+        for (let index = 0; index < storeFiles.length; index++) {
+            if (storeFiles[index].file.name !== name) {
+                filterFiles.push(storeFiles[index]);
+            }
+            
+            if (filterFiles.length +1 === storeFiles.length) {
                 setStoreFiles(filterFiles);
                 fileInputRef.current.dispatchEvent(event);
             }
         }
+    }
+
+    //Split Files Into Chunks
+    const uploadFileChunks = async (file) => {
+
+        const chunkList = [];
+
+        const chunkSize = 1024 * 1024 * 50; // 50Mb Chunk Size
+        const chunks = Math.ceil(file.size / chunkSize);
+
+        for (let index = 0; index < chunks; index++) {
+
+            const start = index * chunkSize;
+
+        //     if (index === 0) {
+        //         savepointIndex === 0 ? formData.append('startIndex', start) : formData.append('startIndex', savepointIndex)
+        //     }
+
+            const end = Math.min(file.size, start + chunkSize);
+            const chunk = file.slice(start, end);
+
+            chunkList.push(chunk)
+
+        //     formData.append('file',chunk,file.name);
+
+        //     if (index === chunks - 1) {
+        //         savepointIndex = savepointIndex + chunks;
+        //         formData.append('endIndex', savepointIndex - 1);
+        //     }
+
+        }
+
+        return chunkList;
+
     }
 
     const dispatch = useDispatch();
@@ -136,7 +228,7 @@ const Video = () => {
             <Box m="20px" >
                 <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={videoSchema}>
                     {({values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue }) => (
-                        <form onSubmit={handleSubmit} encType="application/json" >
+                        <form onSubmit={handleSubmit} >
                         <Box m="20px" display='grid' gap="30px" gridTemplateColumns="repeat(4, minmax(0, 1fr))"
                             sx={{
                                 "& > div": {gridColumn : isNonMobile ? undefined : "span 4"}
@@ -189,7 +281,7 @@ const Video = () => {
                                                     let selectedFiles = e.currentTarget.files;
                                                     
                                                     if (field.value.length > 0) {
-                                                        console.log(deletedFiles);
+                                                        
                                                         if (!deletedFiles) {
                                                             
                                                             // Destructe the FileList to a List
