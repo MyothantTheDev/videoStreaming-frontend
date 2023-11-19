@@ -7,24 +7,25 @@ import { studentsReducer } from './reducers/studentReducers';
 import { batchReducer } from './reducers/batchReducer';
 
 import { loadState } from './saveState';
-import { videoReducer } from './reducers/videoReducer';
+import { videoReducer, combineVideoReducer } from './reducers/videoReducer';
+import { SingleVideoReducer } from './reducers/singleVideoReducer'
 
 const reducer = combineReducers({
     auth: authReducer,
     student: studentsReducer,
     batch: batchReducer,
     video: videoReducer,
+    singleVideo: SingleVideoReducer,
+    combineVideo: combineVideoReducer,
 })
 
-// let initState = {
-//     auth: loadState('user') ? loadState('user'): {
-//         isAuthenticated: false,
-//         loading: false,
-//         user: null
-//     },
-// }
-
-let initState = {};
+let initState = {
+    auth: loadState('user') ? loadState('user'): {
+        isAuthenticated: false,
+        loading: false,
+        user: null
+    },
+}
 
 const middleware = [thunk]
 const store = createStore(reducer, initState, composeWithDevTools(applyMiddleware(...middleware)))
