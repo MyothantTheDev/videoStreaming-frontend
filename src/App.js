@@ -16,7 +16,7 @@ function App() {
           <Route path='/login' Component={Login} />
           <Route path='/account' Component={ProtectedRoute} >
             <Route path='admin/*' Component={AdminDashBoard}/>
-            <Route path='user' Component={UserHome} />
+            <Route path='user/*' Component={UserHome} />
           </Route>
         </Routes>
       </Router>
